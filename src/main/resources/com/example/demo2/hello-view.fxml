@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="241.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.HelloController">
+<children>
+    <AnchorPane layoutX="508.0" layoutY="10.0" prefHeight="242.0" prefWidth="424.0">
+        <children>
+            <TabPane layoutX="0" layoutY="0" prefHeight="244.0" prefWidth="424.0" tabClosingPolicy="UNAVAILABLE">
+                <tabs>
+                    <Tab text="Zbieranie danych">
+                        <content>
+                            <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="224.0" prefWidth="424.0" VBox.vgrow="ALWAYS">
+                                <children>
+
+                                    <TableView fx:id="tabelaPrzedmiotowPrzygotowana" layoutX="177.0" layoutY="81.0" prefHeight="126.0" prefWidth="234.0">
+                                        <columns>
+                                            <TableColumn fx:id="listaPrzedmiotowDoZbierania" prefWidth="62.0" text="Przedmiot" />
+                                            <TableColumn fx:id="listaCenSprzedazy" prefWidth="95.0" text="Cena sprzedaży" />
+                                            <TableColumn fx:id="listaCenKupna" prefWidth="74.0" text="Cena kupna" />
+                                        </columns>
+                                    </TableView>
+                                    <TextField fx:id="source" layoutX="248.0" layoutY="3.0" prefHeight="22.0" prefWidth="121.0" promptText="Plik .txt z itemami." />
+                                    <Label layoutX="212.0" layoutY="7.0" text="Itemy" />
+                                    <Button fx:id="fileChooserButton" layoutX="369.0" layoutY="3.0" onAction="#onChoseButtonClick" text="..." />
+                                    <Button fx:id="collectButton" defaultButton="true" layoutX="212.0" layoutY="41.0" mnemonicParsing="false" onAction="#onCollectButtonClick" prefHeight="35.0" prefWidth="100.0" text="ZBIERAJ CENY!" wrapText="true" />
+
+                                    <Button fx:id="transferButton" layoutX="101.0" layoutY="133.0" mnemonicParsing="false" onAction="#onTransferButtonClick" prefHeight="22.0" prefWidth="120.0" rotate="270.0" text="▼TRANSFER▼" />
+
+                                    <AnchorPane layoutX="9.0" layoutY="81.0" minHeight="0.0" minWidth="0.0" prefHeight="126.0" prefWidth="145.0">
+                                        <children>
+                                            <TableView fx:id="tabelaPrzedmiotow" onMouseExited="#onTransferButtonClick" prefHeight="126.0" prefWidth="137.0">
+                                                <columns>
+                                                    <TableColumn fx:id="listaZaznaczen" prefWidth="24.0" text="X" />
+                                                    <TableColumn fx:id="listaPrzedmiotow" prefWidth="97.0" text="Lista itemów" />
+                                                </columns>
+                                            </TableView>
+                                        </children>
+                                    </AnchorPane>
+                              <ImageView fx:id="podgladImageSell" fitHeight="15.0" fitWidth="82.0" layoutX="315.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="testButton" layoutX="161.0" layoutY="3.0" maxHeight="10.0" mnemonicParsing="false" onAction="#onTestButtonClick" prefHeight="5.0" text="TEST" />
+                              <ProgressBar fx:id="progressBar" layoutX="212.0" layoutY="28.0" prefHeight="10.0" prefWidth="200.0" progress="0.0" />
+                              <ImageView fx:id="podgladImageBuy" fitHeight="15.0" fitWidth="82.0" layoutX="315.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="komunikator" layoutX="10.0" layoutY="207.0" text="Zapraszamy!" textFill="RED">
+                                 <font>
+                                    <Font size="8.0" />
+                                 </font>
+                              </Label>
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="Wykres">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                                    <Label layoutX="9.0" layoutY="7.0" text="Ścieżka dostępu do pliku z cenami" />
+                                    <TextField fx:id="csvSource" layoutX="9.0" layoutY="25.0" prefHeight="22.0" prefWidth="176.0" promptText="Plik .csv z cenami." />
+                                    <Button fx:id="csvChooserButton" layoutX="185.0" layoutY="25.0" mnemonicParsing="false" onAction="#onCSVChoseButtonClick" text="..." />
+
+                                    <Button fx:id="startButton" layoutX="224.0" layoutY="25.0" mnemonicParsing="false" onAction="#onStartButtonClick" text="Załaduj wykres!" />
+                                    <LineChart fx:id="lineChart" layoutX="11.0" layoutY="58.0" prefHeight="226.0" prefWidth="394.0">
+                                        <xAxis>
+                                            <CategoryAxis fx:id="osX" side="BOTTOM" />
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis fx:id="osY" side="LEFT" />
+                                        </yAxis>
+                                    </LineChart>
+                           </children></AnchorPane>
+                        </content>
+                    </Tab>
+                    <Tab text="Ustawienia">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutX="14.0" layoutY="3.0" prefHeight="210.0" prefWidth="405.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="139.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="32.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="199.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="37.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                     <Label text="Logowanie postaci">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                     <Label text="Login" GridPane.rowIndex="1" />
+                                     <Label text="Hasło" GridPane.rowIndex="2" />
+                                    <Label text="Zapisywanie cen" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Ładuj do pliku .TXT" GridPane.rowIndex="4" />
+                                    <Label text="Ładuj do pliku .CSV" GridPane.rowIndex="5" />
+                                    <Label text="Ładuj do bazy danych SQL" GridPane.rowIndex="6" />
+                                     <TextField prefHeight="22.0" prefWidth="145.0" text="maciek_tarnobrzeg@wp.pl" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                     <TextField fx:id="hasloTextField" prefHeight="22.0" prefWidth="145.0" text="tibia123" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <CheckBox fx:id="txtFileCheckBox" mnemonicParsing="false" onAction="#onTXTBoxAction" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <CheckBox fx:id="csvFileCheckBox" mnemonicParsing="false" onAction="#onCSVBoxAction" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <CheckBox fx:id="sqlCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <Label text="Zpisuj ustawienia" GridPane.rowIndex="7" />
+                                    <CheckBox fx:id="savePropertyCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <TextField fx:id="txtFileTextField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                    <TextField fx:id="csvFileTextField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                    <Button fx:id="csvFileChooserButton" mnemonicParsing="false" onAction="#onChoseCSVPathClick" text="..." GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                    <Button fx:id="txtFileChooserButton" mnemonicParsing="false" onAction="#onChoseTXTPathClick" text="..." GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                </tabs>
+            </TabPane>
+        </children></AnchorPane>
+</children>
+</VBox>

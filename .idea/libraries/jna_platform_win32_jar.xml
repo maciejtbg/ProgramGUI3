@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jna-platform-win32.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../WinAPI/jna-platform-win32.jar.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
